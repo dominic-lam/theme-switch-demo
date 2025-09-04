@@ -1,13 +1,25 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Anti-FOUC: set initial data-theme ASAP from localStorage or system -->
+  <script>
+    try {
+      const stored = localStorage.getItem('theme'); // 'light' | 'dark' | 'system' | null
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initial = stored === 'light' ? 'light'
+              : stored === 'dark'  ? 'dark'
+                      : (systemDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', initial);
+    } catch {}
+  </script>
+
+  <title>theme-switch-demo</title>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
+</body>
 </html>
