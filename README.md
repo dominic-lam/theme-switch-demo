@@ -23,7 +23,7 @@ A tiny demo app showing how to implement **dark / light / system theme switching
 ## 📂 Project Structure
 
 ```bash
-my-theme-demo/
+theme-switch-demo/
 ├─ index.html            # Adds theme script early
 ├─ vite.config.js        # React + Tailwind plugin config
 ├─ package.json
