@@ -1,22 +1,26 @@
+<!-- index.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Anti-FOUC: set initial data-theme ASAP from localStorage or system -->
+  <!-- Prevent FOUC by toggling class before app loads -->
   <script>
-    try {
-      const stored = localStorage.getItem('theme'); // 'light' | 'dark' | 'system' | null
-      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const initial = stored === 'light' ? 'light'
-              : stored === 'dark'  ? 'dark'
-                      : (systemDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', initial);
-    } catch {}
+    // Respect saved preference; otherwise fall back to system
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const stored = localStorage.getItem("theme"); // "light" | "dark" | null
+    const isDark = stored ? stored === "dark" : prefersDark;
+    document.documentElement.classList.toggle("dark", isDark);
+
+    // Optional: keep <meta color-scheme> honest for built-in form controls
+    const meta = document.createElement("meta");
+    meta.name = "color-scheme";
+    meta.content = isDark ? "dark light" : "light dark";
+    document.head.appendChild(meta);
   </script>
 
-  <title>theme-switch-demo</title>
+  <title>Theme Demo</title>
 </head>
 <body>
 <div id="root"></div>
