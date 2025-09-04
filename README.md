@@ -40,8 +40,8 @@ my-theme-demo/
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/yourname/my-theme-demo.git
-cd my-theme-demo
+git clone https://github.com/dominic-lam/theme-switch-demo.git
+cd theme-switch-demo
 npm install
 ```
 
