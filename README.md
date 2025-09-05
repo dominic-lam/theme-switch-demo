@@ -57,6 +57,8 @@ Visit [http://localhost:5173](http://localhost:5173) (or whatever port Vite show
 
 ## ⚙️ How It Works
 
+A detailed document about how it works, [here](docs/theme-switcher-deep-dive.md).
+
 * **Tailwind v4** uses `@import "tailwindcss";` directly in `index.css`.
 * A **custom dark variant** is defined:
 
